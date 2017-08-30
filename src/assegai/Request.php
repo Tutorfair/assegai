@@ -28,6 +28,8 @@
 
 namespace assegai;
 
+use assegai\exceptions\FileUploadError;
+
 class Request extends Stateful
 {
     /** Requested route. */
@@ -49,6 +51,8 @@ class Request extends Stateful
     /** Security */
     protected $sec;
     protected $server;
+
+    protected $prefix;
 
     /**
      * Initialises this request object.
@@ -110,8 +114,23 @@ class Request extends Stateful
         $this->getvars = $this->postvars = $args;
     }
 
+    public function setPrefix($prefix)
+    {
+        $this->prefix = $prefix;
+        return $this;
+    }
+
     public function getRoute() {
-        return $this->route;
+        $route = $this->route;
+        if ($this->prefix && stripos($route, $this->prefix) === 0) {
+            $route = substr($route, strlen($this->prefix));
+        }
+
+        if (!$route) {
+            $route = '/';
+        }
+
+        return $route;
     }
     
     public function getMethod() {
@@ -320,7 +339,7 @@ class Request extends Stateful
         // Several files uploaded with the same name like uploads[].
         if(is_array($_FILES[$slot_name]['name'])) {
             if(!is_dir($target)) {
-                throw new Exception("Target `$target' must be a directory for several files.");
+                throw new \Exception("Target `$target' must be a directory for several files.");
             }
 
             $return = array();
