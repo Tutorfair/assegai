@@ -351,6 +351,11 @@ namespace assegai {
 
             // Cleaning for messy namespace separators.
             $class = preg_replace('/\\\\{2,}/', '\\', trim($class, '\\'));
+		
+	    // Send a new relic name, if available
+	    if (extension_loaded ('newrelic')) {
+                newrelic_name_transaction ($class . '/' . $method);
+            }
 
             $response = null;
 
