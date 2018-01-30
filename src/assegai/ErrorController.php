@@ -71,7 +71,8 @@ class ErrorController extends Controller
         $e = $this->request->getException();
 
         if(isset($_SERVER['APPLICATION_ENV'])
-        && $_SERVER['APPLICATION_ENV'] == 'development') {
+            && ($_SERVER['APPLICATION_ENV'] == 'development' || $_SERVER['APPLICATION_ENV'] == 'docker-dev'))
+        {
             if(php_sapi_name() != 'cli') {
                 return $this->glimpse('templates/errorview.phtml', array(
                     'exception' => $e,
