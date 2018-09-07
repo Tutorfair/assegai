@@ -248,6 +248,7 @@ class Stateful
         }
 
         if(!headers_sent()) {
+            unset($this->cookiesvars['AWSALB']);
             foreach($this->cookievars as $cookiename => $cookiedef) {
                 if($cookiedef['value'] === null) {
                     setcookie($cookiename, null, time() - 3600, '/'); // Expiring the cookie

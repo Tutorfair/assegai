@@ -64,7 +64,7 @@ class CFUtilities
 	/**
 	 * Retrieves the value of a class constant, while avoiding the `T_PAAMAYIM_NEKUDOTAYIM` error. Misspelled because `const` is a reserved word.
 	 *
-	 * @param object $class (Required) An instance of the class containing the constant.
+	 * @param Mapping $class (Required) An instance of the class containing the constant.
 	 * @param string $const (Required) The name of the constant to retrieve.
 	 * @return mixed The value of the class constant.
 	 */
@@ -255,7 +255,7 @@ class CFUtilities
 	 * Returns the first value that is set. Based on [Try.these()](http://api.prototypejs.org/language/Try/these/) from [Prototype](http://prototypejs.org).
 	 *
 	 * @param array $attrs (Required) The attributes to test, as strings. Intended for testing properties of the $base object, but also works with variables if you place an @ symbol at the beginning of the command.
-	 * @param object $base (Optional) The base object to use, if any.
+	 * @param Mapping $base (Optional) The base object to use, if any.
 	 * @param mixed $default (Optional) What to return if there are no matches. Defaults to `null`.
 	 * @return mixed Either a matching property of a given object, boolean `false`, or any other data type you might choose.
 	 */

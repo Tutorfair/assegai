@@ -43,9 +43,9 @@ namespace assegai\modules\pdomappers
 
 		/**
 		 * Saves the object to the database.
-		 * @param IObject $object is the object to be mapped and saved.
+		 * @param IMapping $object is the object to be mapped and saved.
 		 */
-		function save(IObject $object);
+		function save(IMapping $object);
 
 		/**
 		 * Loads all elements compliant with a set of conditions.

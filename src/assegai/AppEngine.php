@@ -417,8 +417,8 @@ namespace assegai {
             else if($response === null) {
                 $response = new Response();
             }
-            else if(gettype($response) != 'object'
-            || (gettype($response) == 'object'
+            else if(gettype($response) != 'Mapping'
+            || (gettype($response) == 'Mapping'
             && (get_class($response) != 'assegai\Response'
             && !is_subclass_of($response, 'assegai\Response')))) {
                 throw new exceptions\IllegalResponseException('Unknown response.');

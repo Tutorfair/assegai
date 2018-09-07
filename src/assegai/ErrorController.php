@@ -46,7 +46,8 @@ class ErrorController extends Controller
     {
         $trace = $error->getTrace();
         $formatted_trace = array();
-        for($i = 0; $i < count($trace); $i++) {
+        $traceSize = count($trace);
+        for($i = 0; $i < ($traceSize); $i++) {
             $line = '';
             if(true || strpos($trace[$i]['class'], 'assegai\\') === false) {
                 $line = "$i - ";
@@ -57,8 +58,9 @@ class ErrorController extends Controller
                     $line.= $trace[$i]['function'] . "() ";
                 }
                 $line.= sprintf("in %s on line %s",
-                $trace[$i]['file'],
-                $trace[$i]['line']);
+                    (isset($trace[$i]['file']) ?: '(no file)')
+                    (isset($trace[$i]['line']) ?: '(no line)')
+                );
             }
             $formatted_trace[] = $line;
         }
