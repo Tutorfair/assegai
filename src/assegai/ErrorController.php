@@ -51,15 +51,16 @@ class ErrorController extends Controller
             $line = '';
             if(true || strpos($trace[$i]['class'], 'assegai\\') === false) {
                 $line = "$i - ";
-                if($trace[$i]['class']) {
+                if(isset($trace[$i]['class'])) {
                     $line.= "at " . $trace[$i]['class'] . "::";
                 }
-                if($trace[$i]['function']) {
+                if(isset($trace[$i]['function'])) {
                     $line.= $trace[$i]['function'] . "() ";
                 }
-                $line.= sprintf("in %s on line %s",
-                    (isset($trace[$i]['file']) ?: '(no file)')
-                    (isset($trace[$i]['line']) ?: '(no line)')
+
+                $line .= sprintf("in %s on line %s",
+                    (isset($trace[$i]['file']) ? $trace[$i]['file'] : '(no file)'),
+                    (isset($trace[$i]['line']) ? $trace[$i]['line'] : '(no line)')
                 );
             }
             $formatted_trace[] = $line;
