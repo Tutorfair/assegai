@@ -150,7 +150,7 @@ class Controller implements IController
         }
         else {
             $classname = 'Helper_' . ucwords($helper_name);
-            return new $classname($this->modules, $this->server, $this->request, $this->security);
+            return new $classname($this->modules, $this->server, $this->request, $this->sec);
         }
     }
 
