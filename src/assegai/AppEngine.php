@@ -421,6 +421,7 @@ namespace assegai {
             || (gettype($response) == 'object'
             && (get_class($response) != 'assegai\Response'
             && !is_subclass_of($response, 'assegai\Response')))) {
+
                 throw new exceptions\IllegalResponseException('Unknown response.');
             }
 

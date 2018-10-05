@@ -46,7 +46,7 @@ namespace assegai\modules\esi
             if(gettype($response) == 'string') {
                 $response = new \assegai\Response($response);
             }
-            else if(gettype($response) != 'object'
+            else if(gettype($response) != 'Mapping'
                     || (get_class($response) != 'assegai\\Response'
                         && is_subclass_of($response) != 'assegai\\Response')) {
                 throw new \assegai\IllegalResponseException('Unknown response.');

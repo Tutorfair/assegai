@@ -52,6 +52,10 @@ namespace assegai
             {
                 $filename = $psr0path(str_replace('exceptions\\', '', $classname), $this->conf->get('exceptions_path'));
             }
+            else if($token == 'services')
+            {
+                $filename = $psr0path(str_replace('services\\', '', $classname), 'services');
+            }
             else
             {
                 $filename = $psr0path($classname, $this->conf->get('apps_path'));

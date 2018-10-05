@@ -29,17 +29,9 @@
 
 namespace assegai\modules\pdomappers
 {
-    abstract class Object implements IObject
-    {
-        function __construct(array $data = array())
-        {
-            if($data) {
-                foreach($data as $key => $value) {
-                    if(method_exists($this, 'set' . $key)) {
-                        $this->{'set' . $key}($value);
-                    }
-                }
-            }
-        }
-    }
+	interface IMapping
+	{
+		function getPk();
+		function setPk($value);
+	}
 }
