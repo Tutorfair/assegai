@@ -237,6 +237,7 @@ class Stateful
             if(!is_array($this->sessionvars)) {
                 $this->sessionvars = array();
             }
+            session_start();
             foreach($this->sessionvars as $varname => $val) {
                 if($val === null) {
                     unset($_SESSION[$varname]);
@@ -245,12 +246,13 @@ class Stateful
                     $_SESSION[$varname] = $val;
                 }
             }
+            session_write_close();
         }
 
         if(!headers_sent()) {
             unset($this->cookiesvars['AWSALB']);
             foreach($this->cookievars as $cookiename => $cookiedef) {
-		unset($this->cookiesvars['AWSALB']);
+		        unset($this->cookiesvars['AWSALB']);
                 if($cookiedef['value'] === null) {
                     setcookie($cookiename, null, time() - 3600, '/'); // Expiring the cookie
                 }
