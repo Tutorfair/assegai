@@ -312,7 +312,7 @@ namespace assegai {
                 $this->server->setAppPath(Utils::joinPaths($this->conf->get('apps_path'), $this->current_app));
                 if($this->apps_conf[$this->current_app]->get('use_session') && !headers_sent()) {
                     if (session_status() == PHP_SESSION_NONE) {
-                        session_start();
+                        session_start(['read_and_close' => true]);
                     }
                     $request->setAllSession($_SESSION);
                     $this->request = $request;
