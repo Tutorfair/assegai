@@ -1,6 +1,6 @@
 <?php
 
-class StatefulTest extends PHPUnit_Framework_TestCase
+class StatefulTest extends \PHPUnit\Framework\TestCase
 {
     public function testSetCookies()
     {

@@ -28,7 +28,7 @@
 
 namespace assegai;
 
-class TestController extends \PHPUnit_Framework_TestCase implements IController
+class TestController extends \PHPUnit\Framework\TestCase implements IController
 {
     /** Object that contains loaded modules. */
 	protected $modules;
