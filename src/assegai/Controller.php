@@ -166,7 +166,7 @@ class Controller implements IController
         if(empty($GLOBALS['releaseSignature'])) {
             $release_signature = time();
         }
-        elseif(isset($_SERVER['APPLICATION_ENV']) && $_SERVER['APPLICATION_ENV'] == 'development') {
+        elseif(isset($_SERVER['APPLICATION_ENV']) && ($_SERVER['APPLICATION_ENV'] == 'development' || $_SERVER['APPLICATION_ENV'] == 'docker-dev')) {
             $release_signature = time();
         }
         else {
