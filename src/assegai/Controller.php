@@ -173,6 +173,7 @@ class Controller implements IController
             $release_signature = $GLOBALS['releaseSignature'];
         }
         $var_list['cacheBustingString'] = '?v='.$release_signature;
+        $var_list['releaseHash'] = $release_signature;
 
         $vars = (object)$var_list;
         $blocks = (object)$block_list;
