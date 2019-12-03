@@ -67,7 +67,7 @@ namespace assegai {
 
             $this->modules = $container;
 
-            $this->security = $security;
+            $this->sec = $security;
 
             $this->conf_path = $this->getPath('conf.php');
 
@@ -373,7 +373,7 @@ namespace assegai {
                     'modules' => $this->modules,
                     'server'  => $this->server,
                     'request' => $request,
-                    'sec'     => $this->security)),
+                    'sec'     => $this->sec)),
                 $params);
                 $response = call_user_func_array($method, $params);
             }

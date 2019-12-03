@@ -86,7 +86,7 @@ class TestController extends \PHPUnit\Framework\TestCase implements IController
 
     function helper($helper_name) {
         $classname = 'Helper_' . ucwords($helper_name);
-        return new $classname($this->modules, $this->server, $this->request, $this->security);
+        return new $classname($this->modules, $this->server, $this->request, $this->sec);
     }
 
     /**
