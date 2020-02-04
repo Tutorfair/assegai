@@ -246,8 +246,8 @@ class Server
     }
 
     public function getRemoteAddr() {
-        if(true || isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $layers = $this->server->main->get('x-forwarded-ip-strip-layers');
+        if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && isset($this->main)) {
+            $layers = $this->main->get('x-forwarded-ip-strip-layers');
             if($layers) {
                 $ips = array_merge(
                     array_map('trim', explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']))
