@@ -145,8 +145,7 @@ class Server
 		$this->name        = $this->arrayGet('SERVER_NAME', $s);
 		$this->address     = $this->arrayGet('SERVER_ADDR', $s);
 		$this->port        = $this->arrayGet('SERVER_PORT', $s);
-		$x_forwarded_for = explode(',', $this->arrayGet('HTTP_X_FORWARDED_FOR', $s));
-		$this->remote_addr = $this->arrayGet('HTTP_X_FORWARDED_FOR', $s) ? trim(end($x_forwarded_for)) : $this->arrayGet('REMOTE_ADDR', $s);
+		$this->remote_addr = $this->arrayGet('REMOTE_ADDR', $s);
 		$this->remote_port = $this->arrayGet('REMOTE_PORT', $s);
 		$this->admin       = $this->arrayGet('SERVER_ADMIN', $s);
 		$this->filename    = $this->arrayGet('SCRIPT_FILENAME', $s);
