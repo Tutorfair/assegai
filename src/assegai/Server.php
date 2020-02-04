@@ -246,7 +246,21 @@ class Server
         return $siteurl;
     }
 
-// Accessors
+    public function getRemoteAddr() {
+        if(true || isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $layers = $this->server->main->get('x-forwarded-ip-strip-layers');
+            if($layers) {
+                $ips = array_merge(
+                    array_map('trim', explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']))
+                );
+                $ipIndex = count($ips) - $layers;
+                return $ips[max(0, $ipIndex)];
+            }
+        }
+        return $this->remote_addr;
+    }
+
+    // Accessors
     /** Accessor for $method. */
 	public function getMethod()
 		{ return $this->method; }
@@ -286,9 +300,6 @@ class Server
     /** Accessor for $port. */
 	public function getPort()
 		{ return $this->port; }
-    /** Accessor for $remote_addr. */
-	public function getRemoteAddr()
-		{ return $this->remote_addr; }
     /** Accessor for $remote_port. */
 	public function getRemotePort()
 		{ return $this->remote_port; }
